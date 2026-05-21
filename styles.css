@@ -1,0 +1,447 @@
+/* ============================================================
+   Theme variables
+   - :root holds the DARK theme (the default).
+   - :root[data-theme="light"] overrides for the LIGHT theme.
+   `color-scheme` makes native UI (scrollbars, form controls)
+   match the theme without extra styling.
+============================================================ */
+:root {
+  color-scheme: dark;
+
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --surface-2: #161616;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-bright: rgba(255, 255, 255, 0.14);
+  --text: #f5f5f5;
+  --text-muted: #a3a3a3;
+  --text-dim: #6b6b6b;
+  --accent: #22d3ee;
+  --accent-2: #a855f7;
+  --accent-soft: rgba(34, 211, 238, 0.6);
+  --gradient: linear-gradient(135deg, #22d3ee 0%, #a855f7 100%);
+
+  --bg-glow-1: rgba(34, 211, 238, 0.08);
+  --bg-glow-2: rgba(168, 85, 247, 0.07);
+  --hero-name-gradient: linear-gradient(135deg, #ffffff 0%, #9ca3af 100%);
+  --tag-hover-bg: rgba(34, 211, 238, 0.06);
+  --download-shadow-1: rgba(34, 211, 238, 0.45);
+  --download-shadow-2: rgba(34, 211, 238, 0.55);
+  --download-inset: rgba(255, 255, 255, 0.08);
+  --download-inset-hover: rgba(255, 255, 255, 0.12);
+  --avatar-shadow: rgba(34, 211, 238, 0.3);
+  --job-dot-glow: rgba(34, 211, 238, 0.1);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --surface-2: #f1f3f6;
+  --border: rgba(15, 23, 42, 0.08);
+  --border-bright: rgba(15, 23, 42, 0.18);
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+  --accent: #0891b2;
+  --accent-2: #9333ea;
+  --accent-soft: rgba(8, 145, 178, 0.55);
+  --gradient: linear-gradient(135deg, #0891b2 0%, #9333ea 100%);
+
+  --bg-glow-1: rgba(8, 145, 178, 0.08);
+  --bg-glow-2: rgba(147, 51, 234, 0.06);
+  --hero-name-gradient: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+  --tag-hover-bg: rgba(8, 145, 178, 0.08);
+  --download-shadow-1: rgba(8, 145, 178, 0.35);
+  --download-shadow-2: rgba(8, 145, 178, 0.45);
+  --download-inset: rgba(255, 255, 255, 0.5);
+  --download-inset-hover: rgba(255, 255, 255, 0.7);
+  --avatar-shadow: rgba(8, 145, 178, 0.25);
+  --job-dot-glow: rgba(8, 145, 178, 0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(900px 500px at 5% 0%, var(--bg-glow-1), transparent 60%),
+    radial-gradient(700px 500px at 95% 15%, var(--bg-glow-2), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.3s ease;
+}
+
+.page {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 64px 56px 96px;
+  position: relative;
+  z-index: 1;
+}
+
+/* === Floating Toolbar (Theme toggle + Download) === */
+.toolbar {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 100;
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border-bright);
+  color: var(--text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease, color 0.2s ease;
+  font-family: inherit;
+}
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-soft);
+  color: var(--accent);
+}
+.theme-toggle:active { transform: translateY(0); }
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+:root[data-theme="light"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+/* === Download Button === */
+.download-btn {
+  background: var(--gradient);
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  box-shadow:
+    0 10px 30px -8px var(--download-shadow-1),
+    0 0 0 1px var(--download-inset) inset;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+}
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 18px 40px -10px var(--download-shadow-2),
+    0 0 0 1px var(--download-inset-hover) inset;
+}
+.download-btn:active { transform: translateY(0); }
+.download-btn svg { width: 16px; height: 16px; }
+
+/* === Hero === */
+.hero {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  padding-bottom: 44px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 44px;
+}
+
+.avatar {
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38px;
+  font-weight: 800;
+  color: white;
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+  box-shadow: 0 0 0 1px var(--border-bright),
+    0 24px 50px -12px var(--avatar-shadow);
+  position: relative;
+}
+.avatar::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: var(--gradient);
+  opacity: 0.18;
+  filter: blur(14px);
+  z-index: -1;
+}
+
+.hero-info { min-width: 0; }
+.hero-info h1 {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  background: var(--hero-name-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.hero-info h2 {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 12px;
+  letter-spacing: 0.01em;
+}
+.tagline {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 18px;
+  max-width: 580px;
+}
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-size: 13px;
+}
+.contact-row a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.contact-row a:hover { color: var(--accent); }
+.contact-row a svg { width: 13px; height: 13px; opacity: 0.85; }
+
+/* === Sections === */
+section { margin-bottom: 38px; }
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--border-bright), transparent);
+}
+
+.summary {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+.summary strong { color: var(--text); font-weight: 600; }
+
+/* === Skills === */
+.skills-grid { display: grid; gap: 4px; }
+.skill-group {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.skill-group:last-child { border-bottom: none; }
+.skill-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  padding-top: 4px;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.skill-tag {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 5px 12px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.skill-tag:hover {
+  border-color: var(--accent-soft);
+  color: var(--accent);
+  background: var(--tag-hover-bg);
+  transform: translateY(-1px);
+}
+
+/* === Timeline === */
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--border-bright), var(--border) 40%, transparent);
+}
+.job { position: relative; margin-bottom: 28px; }
+.job:last-child { margin-bottom: 0; }
+.job::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 6px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 4px var(--job-dot-glow);
+}
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.job-title { font-size: 16px; font-weight: 600; color: var(--text); }
+.job-period {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.job-company { font-size: 14px; color: var(--accent); margin-bottom: 12px; }
+.job-bullets { list-style: none; padding: 0; }
+.job-bullets li {
+  color: var(--text-muted);
+  font-size: 14px;
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 7px;
+  line-height: 1.6;
+}
+.job-bullets li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+/* === Education === */
+.education-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.degree { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.school { color: var(--accent); font-size: 14px; }
+.edu-period { font-size: 12px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+
+/* ============================================================
+   Print / PDF
+   Force LIGHT-like values on paper regardless of active theme
+   so the printed CV is always crisp ink on white.
+============================================================ */
+@page { size: A4; margin: 0; }
+@media print {
+  :root, :root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --border: rgba(0, 0, 0, 0.12);
+    --border-bright: rgba(0, 0, 0, 0.22);
+    --text: #000000;
+    --text-muted: #1f2937;
+    --text-dim: #4b5563;
+  }
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  body::before { display: none; }
+  .no-print { display: none !important; }
+  .page { padding: 36px 40px; max-width: 100%; }
+  .hero { padding-bottom: 24px; margin-bottom: 26px; gap: 28px; }
+  .avatar {
+    width: 84px; height: 84px; font-size: 28px;
+    box-shadow: 0 0 0 1px var(--border-bright);
+  }
+  .avatar::after { display: none; }
+  .hero-info h1 {
+    font-size: 32px;
+    background: none;
+    -webkit-text-fill-color: #000;
+    color: #000;
+  }
+  .hero-info h2 { font-size: 15px; margin-bottom: 8px; }
+  .tagline { font-size: 13px; margin-bottom: 12px; }
+  section { margin-bottom: 22px; }
+  .section-title { margin-bottom: 14px; }
+  .job { margin-bottom: 18px; }
+  .job-bullets li { font-size: 13px; margin-bottom: 4px; }
+  .summary { font-size: 13.5px; }
+  .skill-group { padding: 10px 0; }
+  section, .job { page-break-inside: avoid; }
+}
+
+/* === Responsive === */
+@media (max-width: 720px) {
+  .page { padding: 36px 22px 80px; }
+  .hero { flex-direction: column; text-align: center; align-items: center; gap: 24px; }
+  .hero-info h1 { font-size: 34px; }
+  .tagline { margin-left: auto; margin-right: auto; }
+  .contact-row { justify-content: center; }
+  .skill-group { grid-template-columns: 1fr; gap: 8px; }
+  .toolbar {
+    top: auto; bottom: 20px; right: 20px;
+  }
+  .download-btn {
+    padding: 11px 18px; font-size: 13px;
+  }
+  .theme-toggle { width: 38px; height: 38px; }
+}
+
+/* === Reduced motion === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

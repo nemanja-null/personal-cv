@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Senior QA Automation Engineer — 14+ years building scalable test automation and AI-driven quality engineering with Playwright, RAG, and LangChain."
+    />
+    <title>Your Name — QA Automation Engineer</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='-apple-system,Segoe UI,Roboto,Arial,sans-serif' font-size='30' font-weight='800' fill='white'%3ECV%3C/text%3E%3C/svg%3E"
+    />
+    <script>
+      // Anti-FOUC: apply saved theme before first paint to prevent
+      // a flash of the wrong color scheme on page load.
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var prefersLight =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: light)").matches;
+          var theme =
+            saved === "light" || saved === "dark"
+              ? saved
+              : prefersLight
+                ? "light"
+                : "dark";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (_) {
+          /* localStorage may throw in private mode; default theme is fine */
+        }
+      })();
+    </script>
+    <script type="module" src="/src/app.ts"></script>
+  </head>
+  <body>
+    <div class="toolbar no-print">
+      <button
+        class="theme-toggle"
+        type="button"
+        title="Toggle light / dark theme"
+        aria-label="Toggle light or dark theme"
+        aria-pressed="false"
+      >
+        <svg
+          class="icon-moon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg
+          class="icon-sun"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path
+            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+          />
+        </svg>
+      </button>
+      <button
+        class="download-btn"
+        type="button"
+        title="Save as PDF from the print dialog"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        Download PDF
+      </button>
+    </div>
+
+    <div class="page">
+      <header class="hero">
+        <div class="avatar">NT</div>
+        <div class="hero-info">
+          <h1>Nemanja Todorovic</h1>
+          <h2>QA Automation Engineer</h2>
+          <p class="tagline">
+            14+ years architecting scalable test automation frameworks and
+            AI-driven quality engineering solutions.
+          </p>
+          <div class="contact-row">
+            <a href="mailto:nemanja.todorovic89@proton.me">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-10 5L2 7" />
+              </svg>
+              nemanja.todorovic89@proton.me
+            </a>
+            <a href="#">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 10c0 7-8 13-8 13s-8-6-8-13a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Belgrade, Serbia
+            </a>
+            <a href="#">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"
+                />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+              linkedin.com/in/yourname
+            </a>
+            <a
+              href="https://github.com/nemanja-null"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile (opens in a new tab)"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                />
+              </svg>
+              github.com/nemanja-null
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <section>
+        <div class="section-title">Professional Summary</div>
+        <p class="summary">
+          Senior QA Automation Engineer with <strong>14+ years</strong> turning
+          fragile test suites into release-gating safety nets across web, API,
+          and CI/CD. I architect
+          <strong>Playwright, Java, and TypeScript</strong> frameworks that cut
+          regression cycles by up to <strong>70%</strong> — and I'm now fusing
+          that craft with <strong>AI-assisted quality engineering</strong>,
+          using <strong>RAG, LangChain, and LLMs</strong> to generate,
+          self-heal, and analyze tests at scale. The result: faster releases,
+          fewer escaped defects, and engineering teams that actually trust their
+          pipeline.
+        </p>
+      </section>
+
+      <section>
+        <div class="section-title">Technical Skills</div>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <div class="skill-label">Languages</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">Groovy</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">Test Automation</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Playwright</span>
+              <span class="skill-tag">+ more</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">DevOps &amp; Cloud</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Jenkins</span>
+              <span class="skill-tag">CI/CD</span>
+              <span class="skill-tag">AWS</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">AI / ML</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Machine Learning</span>
+              <span class="skill-tag">AI</span>
+              <span class="skill-tag">RAG</span>
+              <span class="skill-tag">LangChain</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-label">Databases</div>
+            <div class="skill-tags">
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">Supabase</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">Professional Experience</div>
+        <div class="timeline">
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">Senior QA Automation Engineer</div>
+                <div class="job-company">Company Name</div>
+              </div>
+              <div class="job-period">2021 — Present</div>
+            </div>
+            <ul class="job-bullets">
+              <li>
+                Architected a Playwright + TypeScript automation framework
+                reducing regression cycles by ~70%
+              </li>
+              <li>
+                Built AI-assisted test generation pipeline using
+                <strong>RAG</strong> + <strong>LangChain</strong> to auto-create
+                scenarios from product requirements
+              </li>
+              <li>
+                Owned end-to-end CI/CD test orchestration on Jenkins and AWS
+                across multiple environments
+              </li>
+              <li>
+                Mentored a team of 6 engineers and established automation best
+                practices org-wide
+              </li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">QA Automation Engineer</div>
+                <div class="job-company">Previous Company</div>
+              </div>
+              <div class="job-period">2017 — 2021</div>
+            </div>
+            <ul class="job-bullets">
+              <li>
+                Developed Java-based automation suites for complex enterprise
+                web applications
+              </li>
+              <li>
+                Implemented Groovy-based Jenkins shared libraries to standardize
+                pipelines across 15+ teams
+              </li>
+              <li>
+                Improved test stability from 78% to 98% through architectural
+                refactoring and flake analysis
+              </li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <div class="job-title">QA Engineer</div>
+                <div class="job-company">Earlier Company</div>
+              </div>
+              <div class="job-period">2014 — 2017</div>
+            </div>
+            <ul class="job-bullets">
+              <li>
+                Built foundational automation in Python for web and API testing
+              </li>
+              <li>
+                Authored detailed test plans and partnered with developers on
+                shift-left quality practices
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">Education</div>
+        <div class="education-item">
+          <div>
+            <div class="degree">B.Sc. in Computer Science</div>
+            <div class="school">Your University</div>
+          </div>
+          <div class="edu-period">2010 — 2014</div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
