@@ -7,6 +7,28 @@ const initDownloadButton = (): void => {
   btn.addEventListener("click", () => window.print());
 };
 
+const initScrollReveal = (): void => {
+  const elements = document.querySelectorAll<HTMLElement>(".reveal");
+  if (!elements.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  elements.forEach((el, i) => {
+    el.style.transitionDelay = `${i * 80}ms`;
+    observer.observe(el);
+  });
+};
+
 const ready = (fn: () => void): void => {
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", fn, { once: true });
@@ -18,4 +40,5 @@ const ready = (fn: () => void): void => {
 ready(() => {
   initTheme();
   initDownloadButton();
+  initScrollReveal();
 });
