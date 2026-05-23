@@ -372,6 +372,37 @@ section { margin-bottom: 38px; }
 .school { color: var(--accent); font-size: 14px; }
 .edu-period { font-size: 12px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
 
+/* === Certifications === */
+.certs-list { display: grid; gap: 4px; }
+.cert-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.cert-item:last-child { border-bottom: none; }
+.cert-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 2px; text-decoration: none; }
+a.cert-name:hover { color: var(--accent); }
+.cert-issuer { color: var(--accent); font-size: 14px; }
+.cert-date { font-size: 12px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.cert-desc { font-size: 11.5px; color: var(--text-dim); margin-top: 3px; font-style: italic; }
+
+/* === Languages === */
+.langs-list { display: flex; gap: 24px; }
+.lang-item { display: flex; align-items: baseline; gap: 8px; }
+.lang-name { font-size: 15px; font-weight: 600; color: var(--text); }
+.lang-level {
+  font-size: 13px;
+  color: var(--text-muted);
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+}
+
 /* ============================================================
    Print / PDF
    Force LIGHT-like values on paper regardless of active theme
